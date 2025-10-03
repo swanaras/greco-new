@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew & Bites Cafe - Menu</title>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #A0522D;
+            --light-color: #F5F5DC;
+            --dark-color: #3E2723;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .qr-section {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+        }
+        
+        .qr-code span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .menu-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .menu-section {
+            display: none;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .menu-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            flex: 2;
+        }
+        
+        .item-desc {
+            flex: 3;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .item-price {
+            flex: 1;
+            text-align: right;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .special-offer {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-item {
+                flex-direction: column;
+            }
+            
+            .item-price {
+                text-align: left;
+                margin-top: 5px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Brew & Bites Cafe</h1>
+            <p class="tagline">Serving quality coffee and delicious bites since 2010</p>
+        </header>
+        
+        <section class="qr-section">
+            <h2>Scan to View Menu</h2>
+            <p>Share this QR code with customers for easy access to our menu</p>
+            <div class="qr-code">
+                <span>[QR Code Placeholder]</span>
+            </div>
+            <p>Point your camera at the QR code to view our menu</p>
+        </section>
+        
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="hot-drinks">Hot Drinks</button>
+            <button class="category-btn" data-category="cold-drinks">Cold Drinks</button>
+            <button class="category-btn" data-category="pastries">Pastries</button>
+            <button class="category-btn" data-category="sandwiches">Sandwiches</button>
+            <button class="category-btn" data-category="desserts">Desserts</button>
+        </div>
+        
+        <section id="hot-drinks" class="menu-section active">
+            <h2 class="section-title">Hot Drinks</h2>
+            
+            <div class="menu-item">
+                <div class="item-name">Espresso</div>
+                <div class="item-desc">Strong and rich single shot</div>
+                <div class="item-price">$2.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Americano</div>
+                <div class="item-desc">Espresso with hot water</div>
+                <div class="item-price">$3.00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Cappuccino</div>
+                <div class="item-desc">Espresso with steamed milk and foam</div>
+                <div class="item-price">$3.75</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Latte</div>
+                <div class="item-desc">Espresso with steamed milk</div>
+                <div class="item-price">$4.00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Mocha</div>
+                <div class="item-desc">Chocolate, espresso and steamed milk</div>
+                <div class="item-price">$4.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Hot Chocolate</div>
+                <div class="item-desc">Rich chocolate drink with whipped cream</div>
+                <div class="item-price">$3.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Chai Latte</div>
+                <div class="item-desc">Spiced tea with steamed milk</div>
+                <div class="item-price">$4.00</div>
+            </div>
+        </section>
+        
+        <section id="cold-drinks" class="menu-section">
+            <h2 class="section-title">Cold Drinks</h2>
+            
+            <div class="menu-item">
+                <div class="item-name">Iced Coffee</div>
+                <div class="item-desc">Chilled coffee served over ice</div>
+                <div class="item-price">$3.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Cold Brew</div>
+                <div class="item-desc">Slow-steeped cold coffee</div>
+                <div class="item-price">$4.00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Iced Latte</div>
+                <div class="item-desc">Espresso with cold milk over ice</div>
+                <div class="item-price">$4.25</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Iced Tea</div>
+                <div class="item-desc">Freshly brewed iced tea</div>
+                <div class="item-price">$2.75</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Fruit Smoothie</div>
+                <div class="item-desc">Mixed berries, banana and yogurt</div>
+                <div class="item-price">$5.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Lemonade</div>
+                <div class="item-desc">Freshly squeezed lemonade</div>
+                <div class="item-price">$3.25</div>
+            </div>
+        </section>
+        
+        <section id="pastries" class="menu-section">
+            <h2 class="section-title">Pastries</h2>
+            
+            <div class="menu-item">
+                <div class="item-name">Croissant</div>
+                <div class="item-desc">Buttery, flaky pastry</div>
+                <div class="item-price">$2.75</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Chocolate Croissant</div>
+                <div class="item-desc">Croissant with chocolate filling</div>
+                <div class="item-price">$3.25</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Blueberry Muffin</div>
+                <div class="item-desc">Fresh blueberry muffin</div>
+                <div class="item-price">$2.95</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Cinnamon Roll</div>
+                <div class="item-desc">Soft roll with cinnamon and icing</div>
+                <div class="item-price">$3.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Scone</div>
+                <div class="item-desc">Choice of blueberry or cranberry</div>
+                <div class="item-price">$2.95</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Banana Bread</div>
+                <div class="item-desc">Homemade banana bread slice</div>
+                <div class="item-price">$3.25</div>
+            </div>
+        </section>
+        
+        <section id="sandwiches" class="menu-section">
+            <h2 class="section-title">Sandwiches</h2>
+            
+            <div class="menu-item">
+                <div class="item-name">Turkey & Swiss</div>
+                <div class="item-desc">Sliced turkey with Swiss cheese on multigrain</div>
+                <div class="item-price">$7.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Caprese</div>
+                <div class="item-desc">Fresh mozzarella, tomato, and basil on ciabatta</div>
+                <div class="item-price">$7.00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Chicken Salad</div>
+                <div class="item-desc">Homemade chicken salad on croissant</div>
+                <div class="item-price">$7.75</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">BLT</div>
+                <div class="item-desc">Bacon, lettuce, and tomato on toasted bread</div>
+                <div class="item-price">$6.95</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Veggie Delight</div>
+                <div class="item-desc">Hummus, cucumber, avocado, and sprouts</div>
+                <div class="item-price">$6.75</div>
+            </div>
+        </section>
+        
+        <section id="desserts" class="menu-section">
+            <h2 class="section-title">Desserts</h2>
+            
+            <div class="menu-item">
+                <div class="item-name">Chocolate Cake</div>
+                <div class="item-desc">Rich chocolate layer cake</div>
+                <div class="item-price">$4.95</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Cheesecake</div>
+                <div class="item-desc">New York style cheesecake</div>
+                <div class="item-price">$5.25</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Tiramisu</div>
+                <div class="item-desc">Classic Italian coffee-flavored dessert</div>
+                <div class="item-price">$5.50</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Cookie</div>
+                <div class="item-desc">Chocolate chip or oatmeal raisin</div>
+                <div class="item-price">$2.25</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-name">Brownie</div>
+                <div class="item-desc">Fudgy chocolate brownie</div>
+                <div class="item-price">$3.50</div>
+            </div>
+        </section>
+        
+        <div class="special-offer">
+            <h3>Daily Special</h3>
+            <p>Buy any coffee and pastry together and get 15% off!</p>
+            <p><small>Offer valid until 11am daily</small></p>
+        </div>
+        
+        <footer>
+            <p>Brew & Bites Cafe | 123 Coffee Street, Beanville | (555) 123-4567</p>
+            <p>Open Monday-Friday 7am-7pm, Saturday-Sunday 8am-6pm</p>
+            <p>Prices subject to change. All items may not be available at all times.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const menuSections = document.querySelectorAll('.menu-section');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and sections
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    menuSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const category = this.getAttribute('data-category');
+                    document.getElementById(category).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
